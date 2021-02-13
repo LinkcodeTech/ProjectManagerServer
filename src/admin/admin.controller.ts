@@ -5,16 +5,20 @@ import { UpdateAdminDto } from './dto/update-admin.dto';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly adminService: AdminService) {}
+  constructor(private readonly adminService: AdminService) { }
 
   @Post()
   async create(@Body() createAdminDto: CreateAdminDto) {
-    return await this.adminService.create(createAdminDto);
+    try {
+      return await this.adminService.create(createAdminDto);
+    } catch (error) {
+      return error;
+    }
   }
 
   @Get()
-  findAll() {
-    return this.adminService.findAll();
+  async findAll() {
+    return await this.adminService.findAll();
   }
 
   @Get(':id')
