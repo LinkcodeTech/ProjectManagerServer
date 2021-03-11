@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProjectModule } from './project/project.module';
+import { ProjectManagerModule } from './project-manager/project-manager.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProjectModule } from './project/project.module';
       inject: [ConfigService]
     }),
     ProjectModule,
+    ProjectManagerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
