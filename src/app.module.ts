@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProjectModule } from './project/project.module';
 import { ProjectManagerModule } from './project-manager/project-manager.module';
+import { AuthManagerModule } from './auth/auth-manager/auth-manager.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ProjectManagerModule } from './project-manager/project-manager.module';
     }),
     ProjectModule,
     ProjectManagerModule,
+    AuthManagerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
