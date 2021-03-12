@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProjectModule } from './project/project.module';
 import { ProjectManagerModule } from './project-manager/project-manager.module';
 import { AuthManagerModule } from './auth/auth-manager/auth-manager.module';
+import { AuthAdminModule } from './auth/auth-admin/auth-admin.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthManagerModule } from './auth/auth-manager/auth-manager.module';
     ProjectModule,
     ProjectManagerModule,
     AuthManagerModule,
+    AuthAdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],

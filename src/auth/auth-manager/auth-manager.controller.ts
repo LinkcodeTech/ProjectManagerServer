@@ -19,16 +19,16 @@ export class AuthManagerController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.authManagerService.findOne(+id);
+    return this.authManagerService.findOne(id);
   }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateAuthManagerDto: UpdateAuthManagerDto) {
-    return this.authManagerService.update(+id, updateAuthManagerDto);
+    return this.authManagerService.update(id, updateAuthManagerDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.authManagerService.remove(+id);
+    return this.authManagerService.remove(id);
   }
 }

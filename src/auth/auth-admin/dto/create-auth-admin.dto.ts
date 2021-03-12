@@ -1,4 +1,4 @@
-export class CreateAuthManagerDto {
+export class CreateAuthAdminDto {
     email:string;
     password:string;
 }
