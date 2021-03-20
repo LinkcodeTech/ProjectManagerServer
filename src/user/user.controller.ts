@@ -12,7 +12,9 @@ export class UserController {
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
     try {
-      return await this.userService.create(createUserDto);
+      const user = await this.userService.create(createUserDto);
+      const test = await this.userService.sendMail(createUserDto.email);
+      return user;
     } catch (error) {
       return error;
     }
