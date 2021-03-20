@@ -4,9 +4,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProjectModule } from './project/project.module';
-import { ProjectManagerModule } from './project-manager/project-manager.module';
-import { AuthManagerModule } from './auth/auth-manager/auth-manager.module';
-import { AuthAdminModule } from './auth/auth-admin/auth-admin.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,9 +18,7 @@ import { AuthAdminModule } from './auth/auth-admin/auth-admin.module';
       inject: [ConfigService]
     }),
     ProjectModule,
-    ProjectManagerModule,
-    AuthManagerModule,
-    AuthAdminModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
