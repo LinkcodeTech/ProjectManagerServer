@@ -31,6 +31,11 @@ export class UserController {
     }
   }
 
+  @Get('/dev')
+  async getAllDevs() {
+    return await this.userService.getAllDevs();
+  }
+
   @Get()
   findAll() {
     return this.userService.findAll();
