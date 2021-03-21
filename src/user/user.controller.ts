@@ -14,6 +14,7 @@ export class UserController {
     try {
       const user = await this.userService.create(createUserDto);
       const test = await this.userService.sendMail(createUserDto.email);
+      console.log(user);
       return user;
     } catch (error) {
       return error;
