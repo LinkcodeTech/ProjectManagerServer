@@ -29,6 +29,10 @@ export class UserService {
     return this.userModel.find({role: "DEV"},{  password: 0, __v:0, _id:0, isVerified: 0 });
   }
 
+  getAllManagers(){
+    return this.userModel.find({role: "PM"},{  password: 0, __v:0, _id:0, isVerified: 0 });
+  }
+
   findOne(id: string): Promise<User> {
     return this.userModel.findById(id).exec();
   }

@@ -36,6 +36,11 @@ export class UserController {
     return await this.userService.getAllDevs();
   }
 
+  @Get('/project-manager')
+  async getAllManagers() {
+    return await this.userService.getAllManagers();
+  }
+
   @Get()
   findAll() {
     return this.userService.findAll();
