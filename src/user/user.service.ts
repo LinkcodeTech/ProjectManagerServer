@@ -37,8 +37,10 @@ export class UserService {
     return this.userModel.findOne(loginDto).exec();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    return await this.userModel.findOneAndUpdate({_id:id,password:updateUserDto.oldPass}, {password:updateUserDto.newPass,isVerified:true},{
+      new: true
+    });
   }
 
   remove(id: number) {
