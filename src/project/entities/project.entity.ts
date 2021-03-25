@@ -7,6 +7,12 @@ export type ProjectDocument = Project & Document;
 export class Project {
   @Prop({ required: true })
   name: string;
+
+  @Prop({ required: true })
+  projectManager: string;
+
+  @Prop({ required: true })
+  developers: string[];
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
