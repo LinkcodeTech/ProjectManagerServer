@@ -20,7 +20,7 @@ export class ProjectService {
   }
 
   async findOne(id: string): Promise<Project> {
-    return this.projectModel.findById(id).populate('developers');
+    return this.projectModel.findById(id).populate('developers tasks');
   }
 
   update(id: string, updateProjectDto: UpdateProjectDto) {
@@ -36,6 +36,12 @@ export class ProjectService {
       if (o.developers.includes(userId)) {
         return o;
       }
+    });
+  }
+
+  async updateTasks(id: string, updateProjectDto: UpdateProjectDto) {
+    return await this.projectModel.findOneAndUpdate({ _id: id}, { $push: { tasks: updateProjectDto.taskId  } }, {
+      new: true
     });
   }
 }

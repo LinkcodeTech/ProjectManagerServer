@@ -26,9 +26,9 @@ export class ProjectController {
     return this.projectService.findOne(id);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
-    return this.projectService.update(id, updateProjectDto);
+  @Put(':id/task')
+  updateTasks(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
+    return this.projectService.updateTasks(id, updateProjectDto);
   }
 
   @Delete(':id')
