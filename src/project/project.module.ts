@@ -8,6 +8,7 @@ import { Project } from './entities/project.entity';
 @Module({
   imports: [MongooseModule.forFeature([{ name: Project.name, schema: ProjectSchema }])],
   controllers: [ProjectController],
-  providers: [ProjectService]
+  providers: [ProjectService],
+  exports: [ProjectService]
 })
 export class ProjectModule {}

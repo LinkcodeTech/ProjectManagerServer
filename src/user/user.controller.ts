@@ -4,10 +4,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { Response } from 'express';
+import { ProjectService } from 'src/project/project.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(
+    private readonly userService: UserService,
+    private readonly projectService: ProjectService,
+  ) { }
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
@@ -50,6 +54,11 @@ export class UserController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
+  }
+
+  @Get(':id/project')
+  async getProjects(@Param('id') id: string) {
+    return await this.projectService.findAllByUserId(id);
   }
 
   @Put(':id')

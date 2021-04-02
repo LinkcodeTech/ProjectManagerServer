@@ -25,12 +25,12 @@ export class UserService {
     return this.userModel.find();
   }
 
-  getAllDevs(){
-    return this.userModel.find({role: "DEV"},{  password: 0, __v:0, _id:0, isVerified: 0 });
+  getAllDevs() {
+    return this.userModel.find({ role: "DEV" }, { password: 0, __v: 0 });
   }
 
-  getAllManagers(){
-    return this.userModel.find({role: "PM"},{  password: 0, __v:0, _id:0, isVerified: 0 });
+  getAllManagers() {
+    return this.userModel.find({ role: "PM" }, { password: 0, __v: 0, _id: 0, isVerified: 0 });
   }
 
   findOne(id: string): Promise<User> {
@@ -42,7 +42,7 @@ export class UserService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    return await this.userModel.findOneAndUpdate({_id:id,password:updateUserDto.oldPass}, {password:updateUserDto.newPass,isVerified:true},{
+    return await this.userModel.findOneAndUpdate({ _id: id, password: updateUserDto.oldPass }, { password: updateUserDto.newPass, isVerified: true }, {
       new: true
     });
   }

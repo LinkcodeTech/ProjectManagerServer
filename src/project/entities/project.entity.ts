@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 
 export type ProjectDocument = Project & Document;
 
@@ -11,7 +11,7 @@ export class Project {
   @Prop({ required: true })
   projectManager: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: [{ ref: 'User', type: [Types.ObjectId] }] })
   developers: string[];
 }
 
