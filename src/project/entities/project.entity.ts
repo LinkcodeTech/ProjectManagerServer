@@ -13,6 +13,10 @@ export class Project {
 
   @Prop({ required: true, type: [{ ref: 'User', type: [Types.ObjectId] }] })
   developers: string[];
+
+  @Prop({ required: true, type: [{ ref: 'Task', type: [Types.ObjectId] }] })
+  tasks: string[];
+
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
