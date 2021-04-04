@@ -8,7 +8,7 @@ export class Project {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true })
+  @Prop({ ref: 'User', required: true })
   projectManager: string;
 
   @Prop({ required: true, type: [{ ref: 'User', type: [Types.ObjectId] }] })

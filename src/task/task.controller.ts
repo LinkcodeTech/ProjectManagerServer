@@ -27,8 +27,8 @@ export class TaskController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.update(+id, updateTaskDto);
+  async update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
+    return await this.taskService.update(id, updateTaskDto);
   }
 
   @Delete(':id')

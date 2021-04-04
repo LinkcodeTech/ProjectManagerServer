@@ -20,7 +20,7 @@ export class ProjectService {
   }
 
   async findOne(id: string): Promise<Project> {
-    return this.projectModel.findById(id).populate('developers').populate({
+    return this.projectModel.findById(id).populate('developers').populate('projectManager').populate({
       path: 'tasks',
       populate: {
         path: 'assignedTo',
@@ -39,7 +39,7 @@ export class ProjectService {
 
   async findAllByUserId(userId: string): Promise<Project[]> {
     return await (await this.projectModel.find()).filter((o) => {
-      if (o.developers.includes(userId)) {
+      if (o.developers.includes(userId) || o.projectManager === userId) {
         return o;
       }
     });

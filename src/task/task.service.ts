@@ -23,8 +23,8 @@ export class TaskService {
     return this.TaskModel.findById(id);
   }
 
-  update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+  update(id: string, updateTaskDto: UpdateTaskDto) {
+    return this.TaskModel.findByIdAndUpdate(id, updateTaskDto, { new: true });
   }
 
   remove(id: number) {
