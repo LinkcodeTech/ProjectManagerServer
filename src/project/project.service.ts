@@ -16,7 +16,13 @@ export class ProjectService {
   }
 
   async findAll(): Promise<Project[]> {
-    return await this.projectModel.find();
+    return await this.projectModel.find().populate('developers').populate('projectManager').populate({
+      path: 'tasks',
+      populate: {
+        path: 'assignedTo',
+        model: 'User'
+      }
+    });
   }
 
   async findOne(id: string): Promise<Project> {
