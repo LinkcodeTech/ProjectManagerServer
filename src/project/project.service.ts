@@ -20,7 +20,13 @@ export class ProjectService {
   }
 
   async findOne(id: string): Promise<Project> {
-    return this.projectModel.findById(id).populate('developers tasks');
+    return this.projectModel.findById(id).populate('developers').populate({
+      path: 'tasks',
+      populate: {
+        path: 'assignedTo',
+        model: 'User'
+      }
+    });
   }
 
   update(id: string, updateProjectDto: UpdateProjectDto) {
@@ -40,7 +46,7 @@ export class ProjectService {
   }
 
   async updateTasks(id: string, updateProjectDto: UpdateProjectDto) {
-    return await this.projectModel.findOneAndUpdate({ _id: id}, { $push: { tasks: updateProjectDto.taskId  } }, {
+    return await this.projectModel.findOneAndUpdate({ _id: id }, { $push: { tasks: updateProjectDto.taskId } }, {
       new: true
     });
   }
