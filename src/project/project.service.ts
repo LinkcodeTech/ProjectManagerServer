@@ -44,7 +44,7 @@ export class ProjectService {
   }
 
   async findAllByUserId(userId: string): Promise<Project[]> {
-    return await (await this.projectModel.find()).filter((o) => {
+    return await (await this.projectModel.find().populate('projectManager')).filter((o) => {
       if (o.developers.includes(userId) || o.projectManager === userId) {
         return o;
       }
