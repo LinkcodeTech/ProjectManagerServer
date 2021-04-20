@@ -43,12 +43,16 @@ export class ProjectService {
     return `This action removes a #${id} project`;
   }
 
+  // async findAllByUserId(userId: string): Promise<Project[]> {
+  //   return await (await this.projectModel.find().populate('projectManager')).filter((o) => {
+  //     if (o.developers.includes(userId) || o.projectManager === userId) {
+  //       return o;
+  //     }
+  //   });
+  // }
+
   async findAllByUserId(userId: string): Promise<Project[]> {
-    return await (await this.projectModel.find().populate('projectManager')).filter((o) => {
-      if (o.developers.includes(userId) || o.projectManager === userId) {
-        return o;
-      }
-    });
+    return await (await this.projectModel.find({$or : [{developers : {$in : [userId]}} , {projectManager : {$in : [userId]} }]}).populate('projectManager developers'));
   }
 
   async updateTasks(id: string, updateProjectDto: UpdateProjectDto) {
