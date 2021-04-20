@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProjectModule } from './project/project.module';
 import { UserModule } from './user/user.module';
 import { TaskModule } from './task/task.module';
+import { ReportModule } from './report/report.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TaskModule } from './task/task.module';
     ProjectModule,
     UserModule,
     TaskModule,
+    ReportModule,
   ],
   controllers: [AppController],
   providers: [AppService],
