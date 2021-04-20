@@ -17,9 +17,14 @@ export class ReportController {
     return this.reportService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reportService.findOne(id);
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.reportService.findOne(id);
+  // }
+
+  @Get(':id/devreports')
+  async getReports(@Param('id') id: string) {
+    return await this.reportService.findAllReportsByUserId(id);
   }
 
   @Put(':id')

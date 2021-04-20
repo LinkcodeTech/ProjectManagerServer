@@ -12,6 +12,9 @@ export class Report {
   @Prop({ required: true })
   date : Date;
 
+  @Prop({ required: true })
+  developers : string[];
+
   @Prop({ref : 'Project' , required: true })
   projectId: string;
 
