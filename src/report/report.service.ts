@@ -23,12 +23,16 @@ export class ReportService {
   }
 
 
+  // async findAllReportsByUserId(userId: string): Promise<Report[]> {
+  //   return await (await this.reportModel.find().populate('userId projectId')).filter((o) => {
+  //     if (o.developers.includes(userId)) {
+  //       return o;
+  //     }
+  //   });
+  // }
+
   async findAllReportsByUserId(userId: string): Promise<Report[]> {
-    return await (await this.reportModel.find().populate('userId projectId')).filter((o) => {
-      if (o.developers.includes(userId)) {
-        return o;
-      }
-    });
+    return await this.reportModel.find({developers:{$in : [userId]}}).populate('userId projectId');
   }
 
   findOne(id: string) {
